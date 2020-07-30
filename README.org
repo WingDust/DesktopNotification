@@ -1,4 +1,4 @@
-* 打印明天的日期
-** =(format-time-string "%4Y-%2m-%2d" (time-add (current-time) (seconds-to-time 86400)))=
-* 获取 heading 上的文本,=org-heading-components= 这个函数在 =docstring= 上虽未写根据 =point= 但是实际上有根据 =point=
-** =(nth 4 (org-heading-components)=
+*** 打印明天的日期
+***** =(format-time-string "%4Y-%2m-%2d" (time-add (current-time) (seconds-to-time 86400)))=
+*** 获取 heading 上的文本,=org-heading-components= 这个函数在 =docstring= 上虽未写根据 =point= 但是实际上有根据 =point=
+***** =(nth 4 (org-heading-components)=
