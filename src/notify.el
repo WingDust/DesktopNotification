@@ -7,17 +7,22 @@
       (while (re-search-forward "SCHEDULED" nil t)
         (setq otitle (org-entry-get (point) "SCHEDULED"))
         (setq obody (nth 4 (org-heading-components)))
-        (setq odate ((nth 0 (split-string (string-trim-right otitle ">")))))
-        (setq otime ((nth 2 (split-string (string-trim-right otitle ">")))))
+        (setq odate (nth 0 (split-string (string-trim-right otitle ">"))))
+        ;;(setq odate1 (nth 1 (split-string (string-trim-right otitle ">"))))
+        (setq otime (nth 2 (split-string (string-trim-right otitle ">"))))
 
 
         ;; send the notification
         (if (equal (format-time-string "%4Y-%2m-%2d" (current-time)) odate)
 
-          (setq alert-id (w32-notification-notify  :title otime
-                                                   :body obody ))
+          (run-at-time otime nil (lambda ()
+                                   (
+                                    (setq alert-id (w32-notification-notify  :title otime
+                                                                             :body obody ))
+                                    (when alert-id (w32-notification-close alert-id)))
+                                    )
+                                   ))
 
-          (when alert-id (w32-notification-close alert-id)))
 
         ;;(org-get-heading t t)
         ;;(org-get-entry)
@@ -25,7 +30,8 @@
         ;;(org-up-heading-safe)
         ;;(org-get-heading)
         ))))
-
+(nth 2 (split-string (string-trim-right "<2020-07-30 周四 22:00>" ">")))
+<2020-07-30 周四 22:00>
 
 (current-time-string)
 (current-time)
@@ -36,7 +42,7 @@
 (defun test1 () 
   (message "1"))
 
-(run-at-time "1:48am" nil #'test1)
+(run-at-time "18:12" nil #'test1)
 
 (current-time-string)
 
