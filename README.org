@@ -1,4 +1,15 @@
-*** 打印明天的日期
-***** =(format-time-string "%4Y-%2m-%2d" (time-add (current-time) (seconds-to-time 86400)))=
-*** 获取 heading 上的文本,=org-heading-components= 这个函数在 =docstring= 上虽未写根据 =point= 但是实际上有根据 =point=
-***** =(nth 4 (org-heading-components)=
+**** 启点
+***** [[https://emacs-china.org/t/org-pomodoro/236][给 org-pomodoro 增加桌面通知功能]]
+***** Reference :
+****** 打印明天的日期
+******* =(format-time-string "%4Y-%2m-%2d" (time-add (current-time) (seconds-to-time 86400)))=
+****** 获取 heading 上的文本,=org-heading-components= 这个函数在 =docstring= 上虽未写根据 =point= 但是实际上有根据 =point=
+******* =(nth 4 (org-heading-components)=
+****** =run-at-time= 运行在一个指定时间
+******* [[https://emacs.stackexchange.com/questions/6029/is-it-possible-to-execute-a-function-or-command-at-a-specific-time][Is it possible to execute a function or command at a specific time?]]
+****** Elisp 定时器扩展
+******* [[https://www.chencanhao.com/Emacs/emacs-timer][Elisp 定时器]]
+****** 相对这个项目的想法扩展
+******* [[https://emacs-china.org/t/pomodoro-window-buffer/1375][Pomodoro可在当前window中新建buffer提示吗]]
+****** save-excursion
+******* [[https://blog.csdn.net/eidolon_foot/article/details/78878208][save-excursion]]
