@@ -1,0 +1,3 @@
+* 打印明天的日期
+** =(format-time-string "%4Y-%2m-%2d" (time-add (current-time) (seconds-to-time 86400)))=
+* 
