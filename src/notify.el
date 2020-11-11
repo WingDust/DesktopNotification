@@ -10,8 +10,6 @@
         (setq odate (nth 0 (split-string (string-trim otitle "<" ">"))))
         ;;(setq odate1 (nth 1 (split-string (string-trim-right otitle ">"))))
         (setq otime (nth 2 (split-string (string-trim otitle "<" ">"))))
-
-
         ;; send the notification
         (if (equal (format-time-string "%4Y-%2m-%2d" (current-time)) odate)
 
@@ -20,14 +18,18 @@
                                                                              :body obody ))
                                     (when alert-id (w32-notification-close alert-id)))
                                    ))
-
-
         ;;(org-get-heading t t)
         ;;(org-get-entry)
         ;;(org-up-heading-all)
         ;;(org-up-heading-safe)
         ;;(org-get-heading)
         ))))
+
+
+
+
+
+
 (nth 2 (split-string (string-trim-right "<2020-07-30 周四 22:00>" "<>")))
 <2020-07-30 周四 22:00>
 (string-trim "<2020-07-30 周四 22:00>" "<" ">")
