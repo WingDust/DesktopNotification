@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-10 15:21:11
- * @LastEditTime: 2020-11-27 16:31:53
+ * @LastEditTime: 2020-11-28 17:05:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \project\README.md
@@ -13,8 +13,9 @@
   - 运行依赖
     - python38.dll
   - 由于通知使用了图标所以同路径下需要 `logo.png`
-  > @LastEdit:2020年11月11日 星期三 19:22:43
   使用写入文件后再运行命令行程序来运行，不用传参数，通过文件读写来传信息
+
+  > @LastEdit:2020年11月11日 星期三 19:22:43
 
 ## notify-py 源码学习过程
   - __init__.py 文件作用
@@ -25,3 +26,23 @@
     - 格式化字符串
   - Reference
     - [python字符串前加 f 的含义](https://blog.csdn.net/qq_43463045/article/details/93890436)
+  - 
+
+## notify-py PR 参考
+  > @startDate:2020年11月28日 星期六 13:03:24
+
+  - 在 notify-py 中对 windows 系统的桌面通知通过写入的 powershell 文件来执行通知
+    > 当下面的代码**带有中文或者emoji表情时**中 open() 写入的 powershell 会乱码 
+    > 原因：写入文件没有 BOM 标识
+    ```python
+    -  with open(
+    +  with codecs.open(
+        f"{temp_dir}/{generated_uuid_file}.ps1", "w", 'utf_8_sig'
+    ) as ps1_file:
+          ps1_file.write(generated_file)
+    ```
+  - 解决方案[python写utf-8文件的问题](https://segmentfault.com/q/1010000000131965)
+    - Reference
+    -[python 检测文件编码是否是utf-8无bom](https://blog.csdn.net/shuryuu/article/details/80564074)
+
+  > @lastEdit:
