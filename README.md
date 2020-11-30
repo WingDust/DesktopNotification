@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-10 15:21:11
- * @LastEditTime: 2020-11-28 17:05:11
+ * @LastEditTime: 2020-11-30 21:20:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \project\README.md
@@ -44,5 +44,9 @@
   - 解决方案[python写utf-8文件的问题](https://segmentfault.com/q/1010000000131965)
     - Reference
     -[python 检测文件编码是否是utf-8无bom](https://blog.csdn.net/shuryuu/article/details/80564074)
+
+## Elisp Reference
+  - [Emacs Lisp 速成](https://segmentfault.com/a/1190000004910645)
+  - 
 
   > @lastEdit:
