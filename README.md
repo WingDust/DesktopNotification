@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-10 15:21:11
- * @LastEditTime: 2020-11-30 21:20:29
+ * @LastEditTime: 2020-12-01 21:55:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \project\README.md
@@ -47,6 +47,9 @@
 
 ## Elisp Reference
   - [Emacs Lisp 速成](https://segmentfault.com/a/1190000004910645)
-  - 
-
-  > @lastEdit:
+    - w32-shell-execute
+      > 经过测试在 buffer 中调用的函数中包含使用了 w32-shell-execute 会使它运行路径为 buffer 文件目录
+    - f-write-text
+      > 经过测试 f-write-text 在读写 C盘文件时会被管理员权限限制，
+      > 可能解决方案：Emacs 以管理员运行
+  > @lastEdit:2020年12月01日 星期二 21:55:33
