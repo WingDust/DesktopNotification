@@ -13,23 +13,24 @@
         (setq okeyword (nth 2 (org-heading-components)))
         (setq odate (nth 0 (split-string (string-trim otitle "<" ">"))))
         (setq otime (nth 2 (split-string (string-trim otitle "<" ">"))))
-
+        (unless (equal (format-time-string "%4Y-%2m-%2d" (current-time)) odate) ;; 只有当它的日期与当前计算机日期在同一天才会发出
+            (error "日期不在这一天")
+            )
         ;; 分解时间字符串来完成时间加减
         (setq num1 (string-to-number (nth 0 (split-string otime ":"))))
         (setq num2 (nth 1 (split-string otime  ":")))
         ;; send the notification
-        (if (equal (format-time-string "%4Y-%2m-%2d" (current-time)) odate) ;; 只有当它的日期与当前计算机日期在同一天才会发出
-            (if (string-equal "00" num2)
-                (if (string-equal "00" (number-to-string num1))
-                    (setq otime2 "23:59")
-                  (progn
-                    (setq num1 (number-to-string (- num1 1)))
-                    (setq otime2 (concat num1 ":" "59"))
-                    )
-                  )
-                (setq otime2 (concat (number-to-string num1) ":" (number-to-string (- num2 1))))
+        (if (string-equal "00" num2)
+            (if (string-equal "00" (number-to-string num1))
+                (setq otime2 "23:59")
+              (progn
+                (setq num1 (number-to-string (- num1 1)))
+                (setq otime2 (concat num1 ":" "59"))
+                )
               )
-          (progn
+          (setq otime2 (concat (number-to-string num1) ":"  (number-to-string (- (string-to-number num2) 1))))
+          )
+
             (run-at-time otime2 nil (lambda ()
                                       (f-write-text (concat okeyword "\n" obody) 'utf-8
                                                     "E:\\spacemacs\\emacs26-3\\.emacs.d\\site-lisp\\notify\\Record.txt")
@@ -38,26 +39,26 @@
             (run-at-time otime nil (lambda ()
                                      ;;(setq alert-id (w32-notification-notify  :title otime :body obody ))
                                      ;;(when alert-id (w32-notification-close alert-id)))
-                                     (w32-shell-execute "runas"  "E:\\spacemacs\\emacs26-3\\.emacs.d\\site-lisp\\notify\\notify.exe"
-                                                        )))
-            )
-          )))))
+                                     (w32-shell-execute "open"  "E:\\spacemacs\\emacs26-3\\.emacs.d\\site-lisp\\notify\\notify.exe")))
+          ))))
 
 
+(w32-shell-execute "open"  "E:\\spacemacs\\emacs26-3\\.emacs.d\\site-lisp\\notify\\notify.exe"
+                   )
 
 
 (if 1
-    (insert-buffer)
-  (insert)
-    (message "1")
-  (if 1
-      )
-  (progn
-    (message "2")
-    (message "3")
-    (message "4")
-    )
-    )
+(if 1
+  ;;(insert "1")
+  ;;(if 1
+  ;;    (insert "2")
+  ;;    )
+  ;;  )
+(progn
+  (insert "3")
+  (insert "3")
+  )
+)
 
 
 
