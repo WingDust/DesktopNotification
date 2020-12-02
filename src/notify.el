@@ -43,8 +43,25 @@
           ))))
 
 
-(w32-shell-execute "open"  "E:\\spacemacs\\emacs26-3\\.emacs.d\\site-lisp\\notify\\notify.exe"
-                   )
+
+
+
+
+
+
+
+
+
+
+
+(w32-shell-execute "open"  "E:\\spacemacs\\emacs26-3\\.emacs.d\\site-lisp\\notify\\notify.exe" 0)
+
+
+(f-write-text (concat "asd" "\n" "asd1") 'utf-8
+              ;;     "E:\\spacemacs\\emacs26-3\\.emacs.d\\site-lisp\\notify\\Record.txt")
+              "D:\\Record.txt")
+
+(file-writable-p "D:\\Record.txt")
 
 
 (if 1

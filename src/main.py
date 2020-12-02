@@ -1,27 +1,19 @@
-# import sys
+
+import os
+import sys
+
 from notifypy import Notify
 
-# def sendnofity(title,message):
-def sendnofity():
-    with open('Record.txt','r',encoding='utf-8') as f:
-        # print(f.readline())
-        # print(f.readline())
+def sendnofy():
+    #print(os.path.split(os.path.realpath(sys.argv[0])))
+    #print(os.getcwd()) # 运行路径在调用函数的 buffer 文件目录下
+    with open('E:\\spacemacs\\emacs26-3\\.emacs.d\\site-lisp\\notify\\Record.txt','r',encoding='utf-8') as f:
         notification = Notify()
-        # notification.title = f.readline()
-        t = '我我'
-        t = t.encode('gbk')
-        t = t.decode('gbk')
-        notification.title = t
+        notification.title = f.readline()
         notification.message = f.readline()
-        notification.icon = "./logo.png"
+        notification.icon = "E:\\spacemacs\\emacs26-3\\.emacs.d\\site-lisp\\notify\\logo.png"
         # notification.audio = ""
         notification.send()
 
-
-
-
 if __name__ == "__main__":
-    # sendnofity(sys.argv[1],sys.argv[2])
-    sendnofity()
-    # sendnofity(1,2)
-
+    sendnofy()
